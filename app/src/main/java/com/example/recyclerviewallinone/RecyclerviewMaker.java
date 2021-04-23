@@ -18,6 +18,7 @@ import androidx.appcompat.widget.SearchView;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -149,6 +150,14 @@ public class RecyclerviewMaker {
         recyclerView.setLayoutManager(staggeredGridLayoutManager);
         recyclerView.setAdapter(adapter);
         return instance;
+    }
+
+    void setGridLayout(int spanCount, int orientation) {
+        recyclerView.setLayoutManager(new GridLayoutManager(context, spanCount));
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.addItemDecoration(new DividerItemDecoration(context,
+                orientation));
+        recyclerView.setAdapter(adapter);
     }
 
     void setSwipeToDeleteItemWithTrashIcon() {
